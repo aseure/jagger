@@ -13,7 +13,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if query == nil {
 		w.WriteHeader(400)
 	} else {
-		query.Execute()
+		go query.Execute()
 		w.WriteHeader(200)
 	}
 }

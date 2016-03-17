@@ -1,11 +1,18 @@
 package player
 
+import "math"
+
 func computeScore(keywords1, keywords2 []string) float64 {
 	var total float64 = 0
 
 	for _, k1 := range keywords1 {
 		for _, k2 := range keywords2 {
-			total = total + inverseLevenshteinDistance(k1, k2)
+			d := inverseLevenshteinDistance(k1, k2)
+			if math.IsInf(d, 0) {
+				total = total + 10
+			} else {
+				total = total + d
+			}
 		}
 	}
 

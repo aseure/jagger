@@ -30,13 +30,15 @@ func NewQuery(reader io.Reader) *Query {
 	return &query
 }
 
-func (q *Query) Execute(selectedSound chan<- string) {
+func (q *Query) Execute(response chan<- string) {
 	switch q.Command {
 	case "play":
 		fmt.Println("[CMD] Play", q.Params)
-		player.Play(q.Params, selectedSound)
+		player.Play(q.Params, response)
 	case "stop":
 		fmt.Println("[CMD] Stop")
-		player.Stop()
+		player.Stop(response)
+	case "list":
+		player.List(response)
 	}
 }

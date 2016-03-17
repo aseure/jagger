@@ -1,12 +1,13 @@
 package player
 
 import (
+	"encoding/json"
 	"fmt"
 	"os/exec"
 	"strings"
 )
 
-func Play(params string, selectedSound chan<- string) {
+func Play(params string, response chan<- string) {
 	sounds := listSounds("sounds")
 	if len(sounds) == 0 {
 		return
@@ -24,18 +25,37 @@ func Play(params string, selectedSound chan<- string) {
 
 	if bestScore > 0 {
 		bestSound := sounds[bestIndex]
-		selectedSound <- bestSound.Name
+		response <- bestSound.Name
 		play(bestSound)
 	}
 }
 
-func Stop() {
+func Stop(response chan<- string) {
+	if response != nil {
+		response <- ""
+	}
 	cmd := exec.Command("pkill", "player")
 	cmd.Run()
 }
 
+func List(response chan<- string) {
+	var list []string
+	sounds := listSounds("sounds")
+
+	for _, s := range sounds {
+		list = append(list, s.Name)
+	}
+
+	b, err := json.Marshal(list)
+	if err != nil {
+		response <- ""
+	} else {
+		response <- string(b)
+	}
+}
+
 func play(sound Sound) {
-	Stop()
+	Stop(nil)
 	var program string
 
 	switch sound.Extension {

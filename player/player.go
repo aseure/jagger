@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Play(params string) {
+func Play(params string, selectedSound chan<- string) {
 	sounds := listSounds("sounds")
 	if len(sounds) == 0 {
 		return
@@ -23,7 +23,9 @@ func Play(params string) {
 	}
 
 	if bestScore > 0 {
-		play(sounds[bestIndex])
+		bestSound := sounds[bestIndex]
+		selectedSound <- bestSound.Name
+		play(bestSound)
 	}
 }
 

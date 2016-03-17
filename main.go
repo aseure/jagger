@@ -13,8 +13,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if query == nil {
 		w.WriteHeader(400)
 	} else {
-		go query.Execute()
+		selectedSound := make(chan string)
+		go query.Execute(selectedSound)
 		w.WriteHeader(200)
+		fmt.Fprintf(w, "%s", <-selectedSound)
 	}
 }
 

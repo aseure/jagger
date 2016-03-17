@@ -11,6 +11,7 @@ import (
 type Sound struct {
 	Extension string
 	Keywords  []string
+	Name      string
 	Path      string
 }
 
@@ -27,6 +28,7 @@ func listSounds(directory string) []Sound {
 		sounds = append(sounds, Sound{
 			Extension: strings.TrimSpace(filepath.Ext(name)),
 			Keywords:  getKeywords(name),
+			Name:      name,
 			Path:      path.Join(directory, name),
 		})
 	}

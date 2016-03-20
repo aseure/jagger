@@ -35,6 +35,9 @@ func (q *Query) Execute(response chan<- string) {
 	case "play":
 		fmt.Println("[CMD] Play", q.Params)
 		player.Play(q.Params, response)
+	case "say":
+		fmt.Println("[CMD] Say")
+		player.Say(q.Params, response)
 	case "stop":
 		fmt.Println("[CMD] Stop")
 		player.Stop(response)

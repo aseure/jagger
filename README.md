@@ -3,11 +3,13 @@
 
 Jagger is a simple sound player written in Go. Once run, it listens on port
 `8080` and plays the sound whose name matches the best with the search terms.
-Simply put, it is like a self-hosted Giphy but for sounds.
+Simply put, it is like a self-hosted Giphy but for sounds. It is also able to
+speak!
 
 ## Dependencies
 
  - [Mplayer](http://www.mplayerhq.hu/design7/news.html)
+ - [Espeak](http://espeak.sourceforge.net/)
 
 ## Add sounds
 
@@ -26,7 +28,17 @@ file of the Imperial march from Star Wars, you could name it
 curl -d '{"command": "play", "params": "star wars"}' localhost:8080
 
 # Using HTTPie
-http localhost:8080 command="play" params="happy birthday"
+http localhost:8080 command="play" params="star wars"
+```
+
+### Say something
+
+```
+# Using curl
+curl -d '{"command": "say", "params": "you can't always get what you want"}' localhost:8080
+
+# Using HTTPie
+http localhost:8080 command="play" params="you can't always get what you want"
 ```
 
 ### Stop the sound currently playing

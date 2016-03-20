@@ -30,12 +30,27 @@ func Play(params string, response chan<- string) {
 	}
 }
 
+func Say(params string, response chan<- string) {
+	response <- ""
+	Stop(nil)
+
+	fmt.Println("[SAY]", params)
+	params = "\"" + params + "\""
+	cmd := exec.Command("espeak", "\""+params+"\"")
+	fmt.Println(cmd)
+	cmd.Run()
+}
+
 func Stop(response chan<- string) {
 	if response != nil {
 		response <- ""
 	}
-	cmd := exec.Command("pkill", "player")
-	cmd.Run()
+
+	programs := []string{"mplayer", "espeak"}
+	for _, p := range programs {
+		cmd := exec.Command("pkill", p)
+		cmd.Run()
+	}
 }
 
 func List(response chan<- string) {

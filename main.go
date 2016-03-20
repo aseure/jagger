@@ -14,8 +14,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(400)
 	} else {
 		response := make(chan string)
-		go query.Execute(response)
 		w.WriteHeader(200)
+		go query.Execute(response)
 		fmt.Fprintf(w, "%s", <-response)
 	}
 }

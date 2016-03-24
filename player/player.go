@@ -74,7 +74,7 @@ func play(sound Sound) {
 	var program string
 
 	switch sound.Extension {
-	case ".mp3", ".wav", ".mov":
+	case ".mp3", ".mp4", ".wav", ".mov":
 		program = "mplayer"
 	default:
 		fmt.Println("Extension unsupported: ", sound.Extension)

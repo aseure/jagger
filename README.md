@@ -1,5 +1,5 @@
 # Jagger
-![Logo](logo.gif)
+![Logo](logo.png)
 
 Jagger is a simple sound player written in Go. Once run, it listens on port
 `8080` and plays the sound whose name matches the best with the search terms.

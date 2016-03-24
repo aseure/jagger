@@ -6,9 +6,8 @@ Jagger is a simple sound player written in Go. Once run, it listens on port
 Simply put, it is like a self-hosted Giphy but for sounds. It is also able to
 speak!
 
-## Alfred workflow
+## [Alfred workflow](https://github.com/aseure/jagger/blob/master/alfred/Jagger.alfredworkflow?raw=true)
 
-[Download me!](https://github.com/aseure/jagger/blob/master/alfred/Jagger.alfredworkflow?raw=true)
 ![Alfred Play command](ressources/alfred-play.png)
 ![Alfred Say command](ressources/alfred-say.png)
 

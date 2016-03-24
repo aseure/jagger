@@ -8,8 +8,11 @@ speak!
 
 ## [Alfred workflow](https://github.com/aseure/jagger/blob/master/alfred/Jagger.alfredworkflow?raw=true)
 
-![Alfred Play command](ressources/alfred-play.png)
-![Alfred Say command](ressources/alfred-say.png)
+Available commands:
+ - `play ...`
+ - `say ...`
+ - `stop`
+ - `list`
 
 ## Dependencies
 

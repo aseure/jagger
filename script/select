@@ -1,0 +1,5 @@
+#!/bin/sh
+
+JAGGER=$(dirname $0)/invoke
+PLAYED=$($JAGGER list | jq -r '.[]' | awk -F. '{print $1}' | dmenu)
+$JAGGER play "$PLAYED"

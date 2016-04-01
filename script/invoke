@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ -z "$JAGGER_ADDR" ]; then
+    JAGGER_ADDR=jagger
+fi
+
+COMMAND=$1
+PARAM=$2
+
+if [ -z "$COMMAND" ]; then
+    echo >&2 "usage: $0 COMMAND [PARAM]"
+    exit 1
+fi
+
+curl -d '{"command": "'"$COMMAND"'", "params": "'"$PARAM"'"}' "$JAGGER_ADDR":8080

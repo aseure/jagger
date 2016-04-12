@@ -4,7 +4,7 @@ import "math"
 
 func computeScore(keywords1, keywords2 []string) float64 {
 	var total float64 = 0
-	var seen map[string]bool
+	var seen map[string]bool = make(map[string]bool)
 
 	for _, k1 := range keywords1 {
 		if seen[k1] {

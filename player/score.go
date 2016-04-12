@@ -7,7 +7,7 @@ func computeScore(keywords1, keywords2 []string) float64 {
 	var seen map[string]bool = make(map[string]bool)
 
 	for _, k1 := range keywords1 {
-		if seen[k1] {
+		if !seen[k1] {
 			for _, k2 := range keywords2 {
 				d := inverseLevenshteinDistance(k1, k2)
 				if math.IsInf(d, 0) {
